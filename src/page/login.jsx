@@ -1,109 +1,99 @@
 import {
-    Card,
-    CardHeader,
-    Dialog,
-    
-    CardBody,
-    CardFooter,
-    Typography,
-    Input,
-    Checkbox,
-    Button,
-  } from "@material-tailwind/react";
-import { useState,useEffect } from "react";
-import { Link } from "react-router-dom";
+  Card,
+  CardHeader,
+  Dialog,
+  CardBody,
+  CardFooter,
+  Typography,
+  Input,
+  Checkbox,
+  Button,
+} from "@material-tailwind/react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+export function LoginCard() {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [openDialog, setOpenDialog] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const [login, setLogin] = useState(false);
 
-   
-  export function LoginCard() {
-    const [errorMessage, setErrorMessage] = useState('')
-    const [openDialog, setOpenDialog] = useState(false);
-    const [users, setUsers] = useState([])
-    const [user, setUser] = useState({
-      email: '',
-      password: '',
-    })
-    const navigate = useNavigate()
-    const [login, setLogin] = useState(false)
+  const fatchApi = async () => {
+    try {
+      const response = await axios.get(
+        `https://6682391b04acc3545a08a832.mockapi.io/Todos`
+      );
+      console.log(response.data);
+      setUsers(response.data);
+    } catch (error) {
+      console.log("error", error.errorMessage);
+    }
+  };
 
-    const fatchApi = async ()=>{
-      try { 
-        const response = await axios.get(`https://6682391b04acc3545a08a832.mockapi.io/Todos`) 
-        console.log(response.data)
-        setUsers(response.data)
-      }catch(error) {
-        console.log('error', error.errorMessage)
+  useEffect(() => {
+    fatchApi();
+    if (login) {
+      navigate("/");
+    }
+  }, [login]);
+
+  const handleUser = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleOpenDialog = () => {
+    setOpenDialog(!openDialog);
+  };
+
+  const Signin = () => {
+    console.log("user", user);
+    console.log("users", users);
+
+    users.forEach((item) => {
+      if (item.email == user.email && item.password == user.password) {
+        setLogin(true);
+        localStorage.setItem("id", item.id);
+        localStorage.setItem("name", item.name);
+        localStorage.setItem("point", item.point);
+        console.log("ooo", item);
+        console.log("status", login);
       }
+    });
+  };
 
-    }
-
-    useEffect(()=>{
-fatchApi()
-    },[])
-
-
-    const handleUser = (e)=> {
-      setUser({...user, [e.target.name]: e.target.value})
-    }
-    
-    const handleOpenDialog = ()=>{
-        setOpenDialog(!openDialog)
-    }
-    
-
-
-    
-
-
-    const Signin=()=> {
-     console.log('user',user)
-     console.log('users',users)
-  
-     users.forEach(item=>{
-      if(item.email == user.email && item.password == user.password){
-      
-        setLogin(true)
-        localStorage.setItem('id', item.id)
-        localStorage.setItem('name', item.name)
-        localStorage.setItem('point', item.point)
-        console.log("ooo",item)
-        console.log("status",login)
-      }
-
-      if (login) {
-          
-        navigate("/")
-
-      }
-     })
-    }
-
-    
-
-    return (
-        <div className="w-screen h-screen flex items-center justify-center bg-blue-gray-300">
+  return (
+    <div className="w-screen h-screen flex items-center justify-center bg-blue-gray-600">
       <Card className="w-96">
-        
         <CardBody className="flex flex-col gap-4">
-        <Typography variant="h3" color="black">
-            Sign In 
+          <Typography variant="h3" color="black">
+            Sign In
           </Typography>
-          <Typography  color="gray">Enter your email and password to Sign In.</Typography>
+          <Typography color="gray">
+            Enter your email and password to Sign In.
+          </Typography>
           <Input name="email" label="Email" size="lg" onChange={handleUser} />
-          <Input name="password" label="Password" size="lg" type="password" onChange={handleUser} />
-          <div className="-ml-2.5">
-            <Checkbox label="Remember Me" />
-          </div>
+          <Input
+            name="password"
+            label="Password"
+            size="lg"
+            type="password"
+            onChange={handleUser}
+          />
+          
         </CardBody>
         <CardFooter className="pt-0">
           <Button variant="gradient" fullWidth onClick={Signin}>
             Sign In
           </Button>
           <Typography variant="small" className="mt-6 flex justify-center">
-            Don&apos;t have an account?
-            <Typography
+            
+            {/* <Typography
               as="a"
               href="#signup"
               variant="small"
@@ -112,12 +102,12 @@ fatchApi()
               onClick={handleOpenDialog}
             >
               Sign up
-            </Typography>
+            </Typography> */}
           </Typography>
         </CardFooter>
       </Card>
 
-      <Dialog  //register 
+      <Dialog //register
         size="xs"
         open={openDialog}
         handler={handleOpenDialog}
@@ -128,7 +118,7 @@ fatchApi()
             <Typography variant="h4" color="blue-gray">
               Sign Up
             </Typography>
-            
+
             <Typography className="-mb-2" variant="h6">
               name
             </Typography>
@@ -163,12 +153,12 @@ fatchApi()
                 className="ml-1 font-bold"
                 onClick={handleOpenDialog}
               >
-                Sign in
+                Sign inx
               </Typography>
             </Typography>
           </CardFooter>
         </Card>
       </Dialog>
-      </div>
-    );
-  }
+    </div>
+  );
+}

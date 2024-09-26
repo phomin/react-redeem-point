@@ -9,25 +9,6 @@ import { Data } from "../page/Product";
 import moment from "moment";
 
 export default function CardProduct(props) {
-//   const start = Date.now();
-//   const dateNow = moment(start).format("DD/MM/YYYY");
-//   const UserID = localStorage.getItem("id");
-//   const Product = useContext(Data);
-
-//   const [test, settest] = useState({});
-
-//   const handleClickButton = async (prop)=>{
-//      settest(prop)
-//     test.Product_Date = dateNow;
-//     console.log('Click',test)
-//     //             const myJSON =  JSON.stringify(test);
-//     //            localStorage.setItem("Product", myJSON);
-//     //             console.log("ssssss", test)
-//     // callbackProp();
-//   }
-
-  
-  
 
   
 
@@ -49,9 +30,7 @@ export default function CardProduct(props) {
               <Typography variant="body2" color="text.secondary">
                 {props.Product_Title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                {props.Product_Point}
-              </Typography>
+              
             </CardContent>
           </CardActionArea>
           <CardActions>

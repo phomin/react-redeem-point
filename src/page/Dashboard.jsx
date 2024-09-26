@@ -17,6 +17,7 @@ export const DataUser = createContext();
 
 function dashboard() {
   const UserID = localStorage.getItem("id");
+  const UserName = localStorage.getItem("name");
   const UserPoint = localStorage.getItem("point");
   const navigate = useNavigate();
   const [Data, setData] = useState([]);
@@ -39,11 +40,11 @@ function dashboard() {
   console.log("Data", Data);
   let a = 0;
   Data.forEach((val) => {
-console.log(val);
-console.log(val.Data_Product.Product_Use)
-if(!val.Data_Product.Product_Use){
-  a++;
-}
+    console.log(val);
+    console.log(val.Data_Product.Product_Use);
+    if (!val.Data_Product.Product_Use) {
+      a++;
+    }
   });
   return (
     <>
@@ -58,32 +59,54 @@ if(!val.Data_Product.Product_Use){
         </div>
 
         <div className="flex">
-          <CardHome title={"Your Point"} h1={UserPoint} style={"rounded mr-6 mt-6 ml-6 w-full bg-gradient-to-r from-[#F4CE14] to-[#FADFA1]"} />
-          <CardHome title={"Available coupon"} h1={a} style={"rounded mr-6 mt-6 ml-6 w-full bg-gradient-to-r from-[#98DED9] to-[#AACFD0]"} />
-          <CardHome title={"dddddddddd"} h1={"10000"} style={"rounded mr-6 mt-6 ml-6 w-full bg-gradient-to-r from-[#B4E380] to-[#F5EFE6]"} />
+          <CardHome
+            title={"Your Point"}
+            h1={UserPoint}
+            style={
+              "rounded mr-6 mt-6 ml-6 w-full bg-gradient-to-r from-[#F4CE14] to-[#FADFA1]"
+            }
+          />
+          <CardHome
+            title={"Available coupon"}
+            h1={a}
+            style={
+              "rounded mr-6 mt-6 ml-6 w-full bg-gradient-to-r from-[#98DE] to-[#0766AD]"
+            }
+          />
+          <CardHome
+            title={"User"}
+            h1={UserName}
+            style={
+              "rounded mr-6 mt-6 ml-6 w-full bg-gradient-to-r from-[#A1EEBD] to-[#29ADB2]"
+            }
+          />
         </div>
 
-<div className="w-ful mr-11 h-96">
-        <Card className=" rounded mr-6 h-72 mt-10 ml-6 w-full bg-gradient-to-r from-[#FF6868] to-[#FFEAA7]">
-      <CardBody className='ml-6'>
-        <Typography className='mb-5 text-black flex items-center'>
-        <img
-                className="w-1/6 mr-28"
-                src="../public/Coupon.png"
-                alt="gift voucher"
-              ></img>
-              
-        <Button size="sm" variant="" className="flex items-center gap-2 text-sm w-fit h-14 rounded-xl " onClick={()=>{navigate('/Product')}}>SHOP NOW</Button>
+        <div className="w-ful mr-11 h-96">
+          <Card className=" rounded mr-6 h-72 mt-10 ml-6 w-full bg-gradient-to-r from-[#FF6868] to-[#FFEAA7]">
+            <CardBody className="ml-6">
+              <Typography className="mb-5 text-black flex items-center">
+                <img
+                  className="w-1/6 mr-28"
+                  src="../public/Coupon.png"
+                  alt="gift voucher"
+                ></img>
 
-          
-        </Typography>
-       
-      
-      </CardBody>
-      <CardFooter className="pt-0">
-      </CardFooter>
-    </Card>
-    </div>
+                <Button
+                  size="sm"
+                  variant=""
+                  className="flex items-center gap-2 text-sm w-fit h-14 rounded-xl "
+                  onClick={() => {
+                    navigate("/Product");
+                  }}
+                >
+                  SHOP NOW
+                </Button>
+              </Typography>
+            </CardBody>
+            <CardFooter className="pt-0"></CardFooter>
+          </Card>
+        </div>
       </div>
     </>
   );

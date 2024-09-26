@@ -54,51 +54,51 @@ function Product() {
   const Product = [
     {
       Product_ID: 1,
-      Product_name: "name1",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu1",
+      Product_name: "Coupon A",
+      Product_Title: "voucher  10% discount",
       Product_Point: 1000,
       Product_Date: "",
     },
     {
       Product_ID: 2,
-      Product_name: "name2",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu2",
+      Product_name: "Coupon B",
+      Product_Title: "voucher  15% discount",
       Product_Point: 1500,
     },
     {
       Product_ID: 3,
-      Product_name: "name3",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu3",
+      Product_name: "Coupon C",
+      Product_Title: "voucher  20% discount",
       Product_Point: 2000,
     },
     {
       Product_ID: 4,
-      Product_name: "name4",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu4",
+      Product_name: "Coupon D",
+      Product_Title: "voucher  30% discount",
       Product_Point: 3000,
     },
     {
       Product_ID: 5,
-      Product_name: "name5",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu5",
+      Product_name: "Coupon AB",
+      Product_Title: "voucher  40% discount",
       Product_Point: 4000,
     },
     {
       Product_ID: 6,
-      Product_name: "name6",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu6",
+      Product_name: "Coupon AC",
+      Product_Title: "voucher  50% discount",
       Product_Point: 5000,
     },
     {
       Product_ID: 7,
-      Product_name: "name7",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu7",
+      Product_name: "Coupon BB",
+      Product_Title: "voucher  100% discount",
       Product_Point: 10000,
     },
     {
       Product_ID: 8,
-      Product_name: "name8",
-      Product_Title: "uuuuuuuuuuuuuuuuuuuuuuuuuuu8",
+      Product_name: "Super Coupon",
+      Product_Title: "gift voucher",
       Product_Point: 100000,
     },
   ];
@@ -208,7 +208,6 @@ function Product() {
               key={item.Product_ID}
               Product_Name={item.Product_name}
               Product_Title={item.Product_Title}
-              Product_Point={item.Product_Point}
               Point={item.Product_Point}
               ActionClick={() => {
                 setPoint(() => getNewPoint(User.point, item.Product_Point));

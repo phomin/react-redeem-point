@@ -172,10 +172,10 @@ function UseProduct() {
                   aria-describedby="alert-dialog-description"
                 >
                   <DialogTitle id="alert-dialog-title">
-                    {"Use Google's location service?"}
+                    {"Click to open code"}
                   </DialogTitle>
 
-                  {isShowCode ? (
+                  {isShowCode ? ( 
                     <DialogContent>
                       <DialogContentText id="alert-dialog-description">
                         <Button
