@@ -4,13 +4,18 @@ import UseProduct from './page/UseProduct'
 import History from './page/History'
 import { useRoutes } from 'react-router-dom'
 import { LoginCard } from './page/login'
+import ProtectedRoutes from './ProtectedRoutes'
+import { AuthProvider } from './AuthContext'
 
 
 
 function App() {
+
+
   const element = useRoutes([
-    {path: '/', element: <Dashboard/>},
+
     {path: '/login', element: <LoginCard/>},
+    {path: '/', element:<ProtectedRoutes element={<Dashboard/>}/>},
     {path: '/product', element: <Product/>},
     {path: '/history', element: <History/>},
     {path: '/useProduct', element: <UseProduct/>}
@@ -19,4 +24,10 @@ function App() {
   return element
 }
 
-export default App
+export default function RootApp () {
+ return (
+  <AuthProvider>
+  <App/>
+  </AuthProvider>
+ )
+}

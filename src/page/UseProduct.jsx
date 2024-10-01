@@ -16,17 +16,14 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-import moment from "moment";
 
 function UseProduct() {
   const UserId = localStorage.getItem("id");
-
   const [Data, setData] = useState([]);
-
   const [open, setOpen] = useState(false);
   const [isShowCode, setShowCode] = useState(true);
-
   const [ProductCode, SetProductCode] = useState({
     id: "",
     TodoId: "",
@@ -77,6 +74,7 @@ function UseProduct() {
         }
       );
       alert(`Successfully`);
+      window.location.reload();
     } catch (error) {
       console.log("Put error", error);
     }

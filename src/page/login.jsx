@@ -16,13 +16,14 @@ import { useNavigate } from "react-router-dom";
 export function LoginCard() {
   const [errorMessage, setErrorMessage] = useState("");
   const [openDialog, setOpenDialog] = useState(false);
+  const [login, setLogin] = useState(false);
   const [users, setUsers] = useState([]);
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
   const navigate = useNavigate();
-  const [login, setLogin] = useState(false);
 
   const fatchApi = async () => {
     try {
@@ -51,17 +52,17 @@ export function LoginCard() {
     setOpenDialog(!openDialog);
   };
 
-  const Signin = () => {
+  const SignIn = () => {
     console.log("user", user);
     console.log("users", users);
-
+    console.log("logins");
     users.forEach((item) => {
       if (item.email == user.email && item.password == user.password) {
         setLogin(true);
         localStorage.setItem("id", item.id);
         localStorage.setItem("name", item.name);
         localStorage.setItem("point", item.point);
-        console.log("ooo", item);
+        localStorage.setItem("token", true);
         console.log("status", login);
       }
     });
@@ -85,14 +86,12 @@ export function LoginCard() {
             type="password"
             onChange={handleUser}
           />
-          
         </CardBody>
         <CardFooter className="pt-0">
-          <Button variant="gradient" fullWidth onClick={Signin}>
+          <Button variant="gradient" fullWidth onClick={SignIn}>
             Sign In
           </Button>
           <Typography variant="small" className="mt-6 flex justify-center">
-            
             {/* <Typography
               as="a"
               href="#signup"

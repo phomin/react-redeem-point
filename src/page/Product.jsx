@@ -57,7 +57,6 @@ function Product() {
       Product_name: "Coupon A",
       Product_Title: "voucher  10% discount",
       Product_Point: 1000,
-      Product_Date: "",
     },
     {
       Product_ID: 2,

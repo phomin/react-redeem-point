@@ -1,11 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter,Routes , Route } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
 import Navbar from './components/Navbar.jsx'
 import DrawerBasic from './components/Menu.jsx'
 import { useLocation } from 'react-router-dom';
+import { LoginCard } from './page/login'  
+import ProtectedRoutes from './ProtectedRoutes.jsx'
 
 
 const pathname = window.location.pathname
@@ -15,12 +17,16 @@ const pathname = window.location.pathname
 createRoot(document.getElementById('root')).render(
   
   <BrowserRouter>
+  
   {pathname != "/login" && (<Navbar/>)}
   {pathname != "/login" && (<DrawerBasic/>)}
   {pathname == "/login" && (<></>) }
   
+  <App/>
   
-    <App />
+  
+    
+    
     </BrowserRouter>
   
 )
