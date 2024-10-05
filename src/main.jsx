@@ -1,26 +1,28 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter,Routes , Route } from 'react-router-dom'
-import App from './App.jsx'
-import './index.css'
-import Navbar from './components/Navbar.jsx'
-import DrawerBasic from './components/Menu.jsx'
-import { useLocation } from 'react-router-dom';
-import { LoginCard } from './page/login'  
-import ProtectedRoutes from './ProtectedRoutes.jsx'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import App from "./App.jsx";
+import "./index.css";
+import Navbar from "./components/Navbar.jsx";
+import DrawerBasic from "./components/Menu.jsx";
+import { useLocation } from "react-router-dom";
 
+function MainLayout() {
+  const location = useLocation();
+  const pathname = location.pathname; // Reactive way of getting the current path
 
-const pathname = window.location.pathname
-// console.log(pathname)
+  return (
+    <>
+      {pathname === "/login" && <></>}
+      {pathname !== "/login" && <Navbar />}
+      {pathname !== "/login" && <DrawerBasic />}
+      <App />
+    </>
+  );
+}
 
-
-createRoot(document.getElementById('root')).render(
-  
+createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-  {pathname != "/login" && (<Navbar/>)}
-  {pathname != "/login" && (<DrawerBasic/>)}
-  {pathname == "/login" && (<></>) }
-  <App/>
-    </BrowserRouter>
-  
-)
+    <MainLayout />
+  </BrowserRouter>
+);

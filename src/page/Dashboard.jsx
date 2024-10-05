@@ -27,7 +27,7 @@ function dashboard() {
       const response = await axios.get(
         `https://6682391b04acc3545a08a832.mockapi.io/Todos/${UserID}/cxcxccx`
       );
-      setData(response.data);
+      setData(response?.data);
     } catch (e) {
       console.log("error", e);
     }
@@ -93,7 +93,6 @@ function dashboard() {
                 ></img>
 
                 <Button
-
                   className="flex items-center gap-2 text-sm w-fit h-14 rounded-xl "
                   onClick={() => {
                     navigate("/Product");

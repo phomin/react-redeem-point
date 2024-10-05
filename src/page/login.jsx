@@ -38,8 +38,6 @@ export function LoginCard() {
     }
   };
 
-  
-
   const handleUser = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -49,20 +47,21 @@ export function LoginCard() {
   };
 
   const SignIn = () => {
-    users.forEach((item) => {
-      if (item.email == user.email && item.password == user.password) {
-        localStorage.setItem("token", true);
-        localStorage.setItem("id", item.id);
-        localStorage.setItem("name", item.name);
-        localStorage.setItem("point", item.point);
-        setTimeout(() => {
-          setLogin(true)
-        }, 2000);
- 
-      }
-    });
-  }
- 
+    let index = users.findIndex(
+      (item) => user.email == item.email && user.password == item.password
+    );
+    console.log(index);
+    if (index != -1) {
+      localStorage.setItem("token", true);
+      localStorage.setItem("id", users[index].id);
+      localStorage.setItem("name", users[index].name);
+      localStorage.setItem("point", users[index].point);
+      return setLogin(true);
+    } else {
+      setErrorMessage(true);
+      return setLogin(false);
+    }
+  };
 
   useEffect(() => {
     fatchApi();
@@ -70,7 +69,7 @@ export function LoginCard() {
 
   useEffect(() => {
     if (login) {
-   navigate("/");
+      navigate("/");
     }
   }, [login]);
 
@@ -95,8 +94,8 @@ export function LoginCard() {
         </CardBody>
         <CardFooter className="pt-0">
           <div className=" h-5 m-2 text-center font-bold text-red-600">
-            {errorMessage ? (<div>login failed</div>):(<></>) }
-            </div>
+            {errorMessage ? <div>login failed</div> : <></>}
+          </div>
           <Button variant="gradient" onClick={SignIn}>
             Sign In
           </Button>

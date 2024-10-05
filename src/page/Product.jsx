@@ -9,16 +9,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { Alert } from "@material-tailwind/react";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import CardActionArea from "@mui/material/CardActionArea";
-import CardActions from "@mui/material/CardActions";
-import { Fullscreen } from "@mui/icons-material";
-import { green } from "@mui/material/colors";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";415
 
 export const Data = createContext();
 
@@ -102,7 +93,7 @@ function Product() {
     },
   ];
 
-  const OpenDialog = () => {
+  const OpenDialog = () => {5
     setDialog(true);
   };
 
