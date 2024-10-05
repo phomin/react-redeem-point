@@ -103,7 +103,7 @@ function UseProduct() {
             <div className=" h-full w-13 flex items-center p-2 bg-[#00A9FF] rounded">
               <CardGiftcardRoundedIcon sx={{ fontSize: 40 }} color="" />
             </div>
-            <p className="ml-3 font-mono  text-2xl ">Use</p>
+            <div className="ml-3 font-mono  text-2xl ">Use</div>
           </div>
         </div>
         {isLoading && (
@@ -178,8 +178,6 @@ function UseProduct() {
                       <DialogContentText id="alert-dialog-description">
                         <Button
                           className="w-full bg-blue-gray-700"
-                          variant="contained"
-                          color="secondary"
                           onClick={() => {
                             setShowCode(false);
                           }}

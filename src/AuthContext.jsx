@@ -9,8 +9,6 @@ export function AuthProvider({ children }) {
 
     const login = async () => {
      
-     
-      
     }
     const logout = () => {
         setAuthenticated(false)

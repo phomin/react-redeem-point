@@ -16,9 +16,9 @@ function App() {
 
     {path: '/login', element: <LoginCard/>},
     {path: '/', element:<ProtectedRoutes element={<Dashboard/>}/>},
-    {path: '/product', element: <Product/>},
-    {path: '/history', element: <History/>},
-    {path: '/useProduct', element: <UseProduct/>}
+    {path: '/product', element: <ProtectedRoutes element={<Product/>}/> },
+    {path: '/history', element: <ProtectedRoutes element={<History/>}/> },
+    {path: '/useProduct', element:<ProtectedRoutes element={<UseProduct/>}/> }
   ])
 
   return element

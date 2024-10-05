@@ -19,7 +19,6 @@ function Navbar() {
           <Toolbar className="bg-[#7C00FE]">
             <Typography
               variant="h6"
-              component="div"
               sx={{ flexGrow: 1 }}
               className="flex justify-start"
             >
@@ -27,10 +26,8 @@ function Navbar() {
             </Typography>
 
             <div className="flex items-center mr-4 ">
-              <AccountCircleIcon sx={{ fontSize: 40 }} color="" />
-              <Typography className="">
-                <p className="text-xl">{UserName}</p>
-
+              <AccountCircleIcon sx={{ fontSize: 40 }} />
+              <Typography variant="h6">{UserName}
                 </Typography>
             </div>
             <Button
@@ -38,7 +35,7 @@ function Navbar() {
               color="yellow"
               variant="outlined"
             >
-              <p className="mr-2">{UserPoint}</p>
+              <div className="mr-2">{UserPoint}</div>
               <img
                 className="w-5"
                 src="../public/coin.png"

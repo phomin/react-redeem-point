@@ -54,7 +54,7 @@ function dashboard() {
             <div className=" h-full w-13 flex items-center p-2 bg-[#00A9FF] rounded">
               <HomeIcon sx={{ fontSize: 40 }} color="" />
             </div>
-            <p className="ml-3 font-mono  text-2xl ">HOME</p>
+            <div className="ml-3 font-mono  text-2xl ">HOME</div>
           </div>
         </div>
 
@@ -93,8 +93,7 @@ function dashboard() {
                 ></img>
 
                 <Button
-                  size="sm"
-                  variant=""
+
                   className="flex items-center gap-2 text-sm w-fit h-14 rounded-xl "
                   onClick={() => {
                     navigate("/Product");
@@ -104,7 +103,6 @@ function dashboard() {
                 </Button>
               </Typography>
             </CardBody>
-            <CardFooter className="pt-0"></CardFooter>
           </Card>
         </div>
       </div>

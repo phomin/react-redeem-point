@@ -17,16 +17,10 @@ const pathname = window.location.pathname
 createRoot(document.getElementById('root')).render(
   
   <BrowserRouter>
-  
   {pathname != "/login" && (<Navbar/>)}
   {pathname != "/login" && (<DrawerBasic/>)}
   {pathname == "/login" && (<></>) }
-  
   <App/>
-  
-  
-    
-    
     </BrowserRouter>
   
 )

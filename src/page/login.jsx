@@ -14,7 +14,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export function LoginCard() {
-  const [errorMessage, setErrorMessage] = useState("");
+  localStorage.setItem("token", false);
+  const [errorMessage, setErrorMessage] = useState(false);
   const [openDialog, setOpenDialog] = useState(false);
   const [login, setLogin] = useState(false);
   const [users, setUsers] = useState([]);
@@ -37,12 +38,7 @@ export function LoginCard() {
     }
   };
 
-  useEffect(() => {
-    fatchApi();
-    if (login) {
-      navigate("/");
-    }
-  }, [login]);
+  
 
   const handleUser = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -53,20 +49,30 @@ export function LoginCard() {
   };
 
   const SignIn = () => {
-    console.log("user", user);
-    console.log("users", users);
-    console.log("logins");
     users.forEach((item) => {
       if (item.email == user.email && item.password == user.password) {
-        setLogin(true);
+        localStorage.setItem("token", true);
         localStorage.setItem("id", item.id);
         localStorage.setItem("name", item.name);
         localStorage.setItem("point", item.point);
-        localStorage.setItem("token", true);
-        console.log("status", login);
+        setTimeout(() => {
+          setLogin(true)
+        }, 2000);
+ 
       }
     });
-  };
+  }
+ 
+
+  useEffect(() => {
+    fatchApi();
+  }, []);
+
+  useEffect(() => {
+    if (login) {
+   navigate("/");
+    }
+  }, [login]);
 
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-blue-gray-600">
@@ -88,21 +94,12 @@ export function LoginCard() {
           />
         </CardBody>
         <CardFooter className="pt-0">
-          <Button variant="gradient" fullWidth onClick={SignIn}>
+          <div className=" h-5 m-2 text-center font-bold text-red-600">
+            {errorMessage ? (<div>login failed</div>):(<></>) }
+            </div>
+          <Button variant="gradient" onClick={SignIn}>
             Sign In
           </Button>
-          <Typography variant="small" className="mt-6 flex justify-center">
-            {/* <Typography
-              as="a"
-              href="#signup"
-              variant="small"
-              color="blue-gray"
-              className="ml-1 font-bold"
-              onClick={handleOpenDialog}
-            >
-              Sign up
-            </Typography> */}
-          </Typography>
         </CardFooter>
       </Card>
 

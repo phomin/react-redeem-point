@@ -192,8 +192,8 @@ function Product() {
           </div>
         </div>
         {showAlert ? (
-          <div className="flex w-full flex-col gap-2 z-0">
-            <Alert color="green">An error alert for showing message.</Alert>
+          <div className="border-0 sticky top-0 z-50 flex w-full flex-col gap-2 ">
+            <Alert color="green">successfully</Alert>
           </div>
         ) : null}
         <div className="grid-container flex flex-wrap flex-row p-5">
@@ -236,7 +236,7 @@ function Product() {
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description" className="flex justify-center">
-              <p className="text-2xl text-black mr-2">- {Data_Product?.Product_Point}</p> 
+              <div className="text-2xl text-black mr-2">- {Data_Product?.Product_Point}</div> 
               <img
                 className="w-5"
                 src="../public/coin.png"

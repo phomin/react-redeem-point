@@ -24,10 +24,6 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import { useNavigate } from "react-router-dom";
 
 export default function DrawerBasic() {
-  const user = useContext(DataUser);
-  const UserId = localStorage.getItem("id");
-  const UserName = localStorage.getItem("name");
-  const UserPoint = localStorage.getItem("point");
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -48,13 +44,8 @@ export default function DrawerBasic() {
             position: "fixed",
             top: "60px",
           }}
-          component="nav"
           aria-labelledby="nested-list-subheader"
         >
-          <div className="flex justify-center">
-            
-          </div>
-
           <ListItemButton onClick={()=>navigate('/')}>
             <ListItemIcon>
               <HomeIcon />
